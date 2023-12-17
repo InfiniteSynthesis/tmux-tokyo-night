@@ -5,8 +5,7 @@
     
   ---
     
-  **[<kbd> <br> Features <br> </kbd>][features]**
-  **[<kbd> <br> Screenshots <br> </kbd>][screenshots]**
+  **[<kbd> <br> Overview <br> </kbd>][overview]**
   **[<kbd> <br> Install <br> </kbd>][install]**
   **[<kbd> <br> Available Configurations <br> </kbd>][available-configurations]**
   **[<kbd> <br> Plugins <br> </kbd>][plugins]**
@@ -15,22 +14,23 @@
     
 </div>
 
-## Features
+## Overview
 
-## Screenshots
+This theme is forked from [fabioluciano/tmux-tokyo-night](https://github.com/fabioluciano/tmux-tokyo-night).
+The main update includes:
 
-### Tokyo Night - Default Variation
+- Remove stale plugins.
+- Add context plugin.
+- Update styles slightly.
 
-| Inactive  | Active   |
-|-------------- | -------------- |
-|![Tokyo Night tmux theme - Default Variation](./assets/tokyo-night.png "Tokyo Night tmux theme - Default Variation")| ![Tokyo Night tmux theme - Default Variation](./assets/tokyo-night-active.png "Tokyo Night tmux theme - Default Variation")|
+This theme is used in [InfiniteSynthesis/dotfiles](https://github.com/InfiniteSynthesis/dotfiles).
 
 ## Install
 
 Add plugin to the list of `TPM` plugins in `.tmux.conf`:
 
 ```
-set -g @plugin 'fabioluciano/tmux-tokyo-night'
+set -g @plugin 'InfiniteSynthesis/tmux-tokyo-night'
 ```
 
 Hit <kbd>prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You can now use the plugin.
@@ -59,6 +59,15 @@ Hit <kbd>prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You can 
 | `@theme_plugin_datetime_accent_color_icon`| | | |
 | `@theme_plugin_datetime_format`| | | |
 
+### Context
+
+| Configuration | Description | Avaliable Options | Default |
+|---------------- | --------------- | --------------- | --------------- |
+| `@theme_plugin_context_icon`| | | |
+| `@theme_plugin_context_accent_color`| | | |
+| `@theme_plugin_context_accent_color_icon`| | | |
+| `@theme_plugin_context_format`| | | |
+
 ### Example configuration
 
 tmux.conf
@@ -74,14 +83,11 @@ set -g @plugin 'fabioluciano/tmux-tokyo-night'
 
 ### Tokyo Night Theme configuration
 set -g @theme_variation 'moon'
-set -g @theme_left_separator ''
-set -g @theme_right_separator ''
 
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
-[features]:#features
-[screenshots]:#screenshots
+[overview]:#overview
 [install]:#install
 [available-configurations]:#available-configurations
 [plugins]:#plugins
