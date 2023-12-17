@@ -23,7 +23,7 @@ right_separator=$(get_tmux_option "@theme_right_separator" "")
 window_with_activity_style=$(get_tmux_option "@theme_window_with_activity_style" "italics")
 window_status_bell_style=$(get_tmux_option "@theme_status_bell_style" "bold")
 
-IFS=',' read -r -a plugins <<< "$(get_tmux_option "@theme-plugins" "datetime")"
+IFS=',' read -r -a plugins <<< "$(get_tmux_option "@theme-plugins" "datetime,context")"
 
 tmux set-option -g status-left-length 100
 tmux set-option -g status-right-length 100
@@ -79,12 +79,12 @@ for plugin in "${plugins[@]}"; do
     separator_icon_start="#[fg=${PALLETE[$accent_color_icon]},bg=${PALLETE[bg_highlight]}]${right_separator}#[none]"
     separator_icon_end="#[fg=${PALLETE[$accent_color]},bg=${PALLETE[$accent_color_icon]}]${right_separator}#[none]"
 
-    plugin_output="#[fg=${PALLETE[white]},bg=${PALLETE[$accent_color]}]$(load_plugin)#[none]"
+    plugin_output="#[fg=${PALLETE[white]},bg=${PALLETE[$accent_color]}]$(load_plugin) #[none]"
     plugin_output_string=""
 
-    plugin_icon_output="${separator_icon_start}#[fg=${PALLETE[white]},bg=${PALLETE[$accent_color_icon]}]${plugin_icon}${separator_icon_end}"
+    plugin_icon_output="${separator_icon_start}#[fg=${PALLETE[white]},bg=${PALLETE[$accent_color_icon]}] ${plugin_icon} ${separator_icon_end}"
 
-    if [ ! $is_last_plugin -eq 1 ] || [ "${#plugins[@]}" -gt 1 ];then
+    if [ ! $is_last_plugin -eq 1 ];then
       plugin_output_string="${plugin_icon_output}${plugin_output}${separator_end}"
     else
       plugin_output_string="${plugin_icon_output}${plugin_output}"
